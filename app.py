@@ -2,7 +2,7 @@ from flask import Flask, jsonify, render_template, request
 from langchain.vectorstores import Chroma 
 from dotenv import load_dotenv
 from src.helper import repo_ingestion, load_embedding
-from langchain_openai import OpenAI
+from langchain_openai import ChatOpenAI
 from langchain.chains import ConversationalRetrievalChain
 from langchain.memory import ConversationSummaryMemory
 import os 
@@ -23,7 +23,7 @@ vectordb = Chroma(persist_directory=presist_directory,
 
 
 
-llm = OpenAI(model= 'qwen/qwen3-4b:free',
+llm = ChatOpenAI(model= 'qwen/qwen3-4b:free',
              base_url="https://openrouter.ai/api/v1",
              api_key=OPENROUTER_API_KEY,
 )
